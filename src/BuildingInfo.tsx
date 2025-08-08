@@ -104,9 +104,10 @@ export function BuildingInfo() {
     ];
 
     return (
-        <div className="h-[90vh] [perspective:1000px] relative b flex flex-col max-w-5xl mx-auto w-full mt-15 items-start justify-start">
-            <p className="font-bold text-2xl my-5 mx-auto">Select Building type</p>
+        <div className="h-[105vh] [perspective:1000px] relative b flex flex-col max-w-5xl mx-auto w-full mt-10 items-start justify-start">
+            <p className="font-bold text-2xl my-2 mx-auto">Select Building type</p>
             <Tabs tabs={tabs} />
+
         </div>
     );
 }
@@ -131,6 +132,7 @@ const BuildngComponent = () => {
 
                 <BuildingInfo />
 
+
             </div>
 
         </div>
@@ -142,15 +144,33 @@ export default BuildngComponent;
 
 export function InfoTable({ buildingdata }: TableDemoProps) {
     return (
-        <Table>
-            <TableBody>
-                {buildingdata.map((data) => (
-                    <TableRow key={data.name}>
-                        <TableCell className="text-base font-bold">{data.name}:</TableCell>
-                        <TableCell className="text-base font-normal">{data.value}</TableCell>
-                    </TableRow>
-                ))}
-            </TableBody>
-        </Table>
+        <>
+            <Table>
+                <TableBody>
+                    {buildingdata.map((data) => (
+                        <TableRow key={data.name}>
+                            <TableCell className="text-base font-bold">{data.name}:</TableCell>
+                            <TableCell className="text-base font-normal">{data.value}</TableCell>
+                        </TableRow>
+                    ))}
+                </TableBody>
+            </Table>
+
+            <div className="mt-4">
+
+            
+            <p className="text-xs font-normal">Note:</p>
+            <p className="text-xs font-normal">1. Chiller capacity: 400TR each
+            </p>
+            <p className="text-xs font-normal">
+                2. Boiler rating: 80 kW
+            </p>
+
+            <p className="text-xs font-normal">
+                3. For simulation purposes, boiler or chiller will be activated based on the city selected and the weather.
+            </p>
+                <p className="text-xs font-normal"> 4. Target indoor temperature 23 °C</p>
+            </div>
+        </>
     );
 }

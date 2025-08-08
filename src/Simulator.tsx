@@ -64,6 +64,8 @@ const Simulator: React.FC<SimulatorProps> = ({ onSimulate }) => {
                                                     <SelectItem value="dusseldorf">Dusseldorf (DE)</SelectItem>
                                                     <SelectItem value="bahrain">Bahrain (BH)</SelectItem>
                                                     <SelectItem value="singapore">Singapore (SG)</SelectItem>
+                                                    <SelectItem value="abudhabi">Abu Dhabi (UAE)</SelectItem>
+                                                    <SelectItem value="kaulalumpur">kaulalumpur (MY)</SelectItem>
                                                 </SelectContent>
                                             </Select>
                                             <FormMessage />
@@ -103,7 +105,7 @@ const Simulator: React.FC<SimulatorProps> = ({ onSimulate }) => {
                                     name="coolingWaterTemp"
                                     render={({ field }) => (
                                         <FormItem>
-                                            <Label>Cooling Tower's Cooling Water Temperature (°C)</Label>
+                                            <Label>Cooling Tower Water Setpoint Temperature(°C)</Label>
                                             <FormControl>
                                                 <RadioGroup
                                                     onValueChange={field.onChange}
@@ -153,7 +155,7 @@ const Simulator: React.FC<SimulatorProps> = ({ onSimulate }) => {
                                     name="ahuOpening"
                                     render={({ field }) => (
                                         <FormItem>
-                                            <Label>AHU Opening in %</Label>
+                                            <Label>AHU Damper opening %</Label>
                                             <FormControl>
                                                 <RadioGroup
                                                     onValueChange={field.onChange}
