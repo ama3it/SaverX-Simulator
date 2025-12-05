@@ -17,13 +17,12 @@ const MobileBlocker: React.FC = () => {
           d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" 
         />
       </svg>
-      <h1 className="text-3xl font-bold mb-4">Optimized for Desktop use</h1>
+      <h1 className="text-3xl font-bold mb-4">Optimized for Larger Screens.</h1>
       <p className="text-gray-600 max-w-md mb-4">
-        This application requires a larger screen for the optimal experience. 
-        Please switch to a desktop or laptop to access all features.
+        For the best experience, please use a desktop or laptop with a screen aspect ratio of 16:9 or above.
       </p>
       <div className="mt-2 p-3 bg-gray-100 rounded-lg text-sm text-gray-500">
-        If you believe this is an error, please refresh the page or try rotating your device.
+        If you believe this is an error, please refresh the page or try maximizing your browser window.
       </div>
     </div>
   );

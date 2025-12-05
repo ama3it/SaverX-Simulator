@@ -86,7 +86,7 @@ export function BuildingInfo() {
             title: "Office",
             value: "Office",
             content: (
-                <div className="w-full overflow-hidden relative h-2/3 p-10 text-xl md:text-4xl font-bold text-black bg-gradient-to-br from-gray-50 to-gray-200">
+                <div className="w-full overflow-hidden relative h-2/3 p-5 text-xl md:text-4xl font-bold text-black bg-gradient-to-br from-gray-50 to-gray-200">
                     <InfoTable buildingdata={officedata} />
                 </div>
             ),
@@ -95,7 +95,7 @@ export function BuildingInfo() {
             title: "Mall",
             value: "Mall",
             content: (
-                <div className="w-full overflow-hidden relative h-2/3 p-10 text-xl md:text-4xl font-bold text-black bg-gradient-to-br from-gray-50 to-gray-200">
+                <div className="w-full overflow-hidden relative h-2/3 p-5 text-xl md:text-4xl font-bold text-black bg-gradient-to-br from-gray-50 to-gray-200">
 
                     <InfoTable buildingdata={malldata} />
                 </div>
@@ -104,7 +104,7 @@ export function BuildingInfo() {
     ];
 
     return (
-        <div className="h-[105vh] [perspective:1000px] relative b flex flex-col max-w-5xl mx-auto w-full mt-10 items-start justify-start">
+        <div className="h-[110vh] [perspective:1000px] relative b flex flex-col max-w-5xl mx-auto w-full mt-15 items-start justify-start">
             <p className="font-bold text-2xl my-2 mx-auto">Select Building type</p>
             <Tabs tabs={tabs} />
 
@@ -156,20 +156,20 @@ export function InfoTable({ buildingdata }: TableDemoProps) {
                 </TableBody>
             </Table>
 
-            <div className="mt-4">
+            <div className="mt-1 ml-2">
 
             
-            <p className="text-xs font-normal">Note:</p>
-            <p className="text-xs font-normal">1. Chiller capacity: 400TR each
+            <p className="text-[12px] font-normal">Note:</p>
+            <p className="text-[12px] font-normal">1. Chiller capacity: 400TR each
             </p>
-            <p className="text-xs font-normal">
-                2. Boiler rating: 80 kW
+            <p className="text-[12px] font-normal">
+                2. Boiler power rating: 80 kW
             </p>
 
-            <p className="text-xs font-normal">
-                3. For simulation purposes, boiler or chiller will be activated based on the city selected and the weather.
+            <p className="text-[12px] font-normal">
+                3. For simulation purposes, boiler or chiller will be activated automatically based on the city selected and the weather.
             </p>
-                <p className="text-xs font-normal"> 4. Target indoor temperature 23 °C</p>
+                <p className="text-[12px] font-normal"> 4. Target indoor temperature 23 °C</p>
             </div>
         </>
     );

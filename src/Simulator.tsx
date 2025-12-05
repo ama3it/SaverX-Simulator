@@ -65,7 +65,11 @@ const Simulator: React.FC<SimulatorProps> = ({ onSimulate }) => {
                                                     <SelectItem value="bahrain">Bahrain (BH)</SelectItem>
                                                     <SelectItem value="singapore">Singapore (SG)</SelectItem>
                                                     <SelectItem value="abudhabi">Abu Dhabi (UAE)</SelectItem>
-                                                    <SelectItem value="kaulalumpur">kaulalumpur (MY)</SelectItem>
+                                                    <SelectItem value="kaulalumpur">Kuala Lumpur (MY)</SelectItem>
+                                                    <SelectItem value="brisbane">Brisbane (AU)</SelectItem>
+                                                    <SelectItem value="melbourne">Melbourne (AU)</SelectItem>
+                                                    <SelectItem value="london">London (UK)</SelectItem>
+
                                                 </SelectContent>
                                             </Select>
                                             <FormMessage />
@@ -137,11 +141,27 @@ const Simulator: React.FC<SimulatorProps> = ({ onSimulate }) => {
                                                     value={field.value}
                                                     className="flex flex-row space-y-1"
                                                 >
-                                                    {["50", "60", "70", "80"].map((opening) => (
+                                                    {/* {["50", "60", "70", "80"].map((opening) => (
                                                         <Label key={opening} className="flex items-center gap-2">
                                                             <RadioGroupItem value={opening} /> {opening} °C
                                                         </Label>
-                                                    ))}
+                                                    ))} */}
+
+                                                    <Label key={50} className="flex items-center gap-2">
+                                                        <RadioGroupItem value="50" /> 65 °C
+                                                    </Label>
+
+                                                    <Label key={60} className="flex items-center gap-2">
+                                                        <RadioGroupItem value="60" /> 70 °C
+                                                    </Label>
+
+                                                    <Label key={70} className="flex items-center gap-2">
+                                                        <RadioGroupItem value="70" /> 75 °C
+                                                    </Label>
+
+                                                    <Label key={80} className="flex items-center gap-2">
+                                                        <RadioGroupItem value="80" /> 80 °C
+                                                    </Label>
                                                 </RadioGroup>
                                             </FormControl>
                                             <FormMessage />

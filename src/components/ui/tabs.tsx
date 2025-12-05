@@ -99,7 +99,7 @@ export const Tabs = ({
         active={active}
         key={active.value}
         hovering={hovering}
-        className={cn("mt-15", contentClassName)}
+        className={cn("mt-8", contentClassName)}
       />
     </>
   );
@@ -134,7 +134,7 @@ export const FadeInDiv = ({
           animate={{
             y: isActive(tab) ? [0, 40, 0] : 0,
           }}
-          className={cn("w-full h-full absolute top-0 left-0", className)}
+          className={cn("w-full h-full absolute top-0 left-0 ", className)}
         >
           {tab.content}
         </motion.div>
