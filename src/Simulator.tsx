@@ -68,8 +68,10 @@ const Simulator: React.FC<SimulatorProps> = ({ onSimulate }) => {
                                                     <SelectItem value="kaulalumpur">Kuala Lumpur (MY)</SelectItem>
                                                     <SelectItem value="brisbane">Brisbane (AU)</SelectItem>
                                                     <SelectItem value="melbourne">Melbourne (AU)</SelectItem>
+                                                    <SelectItem value="sydney">Sydney (AU)</SelectItem>
                                                     <SelectItem value="london">London (UK)</SelectItem>
-
+                                                    <SelectItem value="auckland">Auckland (NZ)</SelectItem>
+                                                    <SelectItem value="christchurch">Christchurch (NZ)</SelectItem>
                                                 </SelectContent>
                                             </Select>
                                             <FormMessage />
