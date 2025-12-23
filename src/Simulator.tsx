@@ -19,6 +19,43 @@ const Simulator: React.FC<SimulatorProps> = ({ onSimulate }) => {
         resolver: zodResolver(simulationFormSchema),
     });
 
+    const continentCities: Record<string, { value: string; label: string }[]> = {
+        eastasia: [{ value: "tokyo", label: "Tokyo (JP)" }],
+        europe: [
+            { value: "dusseldorf", label: "Dusseldorf (DE)" },
+            { value: "london", label: "London (UK)" },
+        ],
+        india: [
+            { value: "chennai", label: "Chennai (IND)" },
+            { value: "delhi", label: "Delhi (IND)" },
+            { value: "hyderabad", label: "Hyderabad (IND)" },
+        ],
+        middleeast: [
+            { value: "abudhabi", label: "Abu Dhabi (UAE)" },
+            { value: "bahrain", label: "Bahrain (BH)" },
+        ],
+        oceania: [
+            { value: "auckland", label: "Auckland (NZ)" },
+            { value: "brisbane", label: "Brisbane (AU)" },
+            { value: "christchurch", label: "Christchurch (NZ)" },
+            { value: "melbourne", label: "Melbourne (AU)" },
+            { value: "sydney", label: "Sydney (AU)" },
+        ],
+        southeastasia: [
+            { value: "kaulalumpur", label: "Kuala Lumpur (MY)" },
+            { value: "singapore", label: "Singapore (SG)" },
+        ],
+        us: [
+            { value: "houston", label: "Houston (US)" },
+            { value: "newyork", label: "New York (US)" },
+            { value: "tampa", label: "Tampa (US)" },
+            { value: "miami", label: "Miami (US)" }
+        ],
+    };
+
+    const selectedContinent = form.watch("continent");
+    const availableCities = selectedContinent ? continentCities[selectedContinent] ?? [] : [];
+
     // Add this to check if form is complete
     // const isFormComplete = form.watch(['location', 'chilledWaterTemp', 'coolingWaterTemp', 'ahuOpening']).every(Boolean);
 
@@ -45,6 +82,33 @@ const Simulator: React.FC<SimulatorProps> = ({ onSimulate }) => {
                             <form onSubmit={form.handleSubmit(onSimulate)} className="flex flex-col gap-6 overflow-auto">
                                 <FormField
                                     control={form.control}
+                                    name="continent"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <Label>Select Region</Label>
+                                            <Select onValueChange={field.onChange} value={field.value}>
+                                                <FormControl>
+                                                    <SelectTrigger className="w-full">
+                                                        <SelectValue placeholder="Select region" />
+                                                    </SelectTrigger>
+                                                </FormControl>
+                                                <SelectContent>
+                                                    <SelectItem value="eastasia">East Asia</SelectItem>
+                                                    <SelectItem value="europe">Europe</SelectItem>
+                                                    <SelectItem value="india">India</SelectItem>
+                                                    <SelectItem value="middleeast">Middle East</SelectItem>
+                                                    <SelectItem value="oceania">Oceania</SelectItem>
+                                                    <SelectItem value="southeastasia">Southeast Asia</SelectItem>
+                                                    <SelectItem value="us">US</SelectItem>
+                                                </SelectContent>
+                                            </Select>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+
+                                <FormField
+                                    control={form.control}
                                     name="location"
                                     render={({ field }) => (
                                         <FormItem>
@@ -56,22 +120,16 @@ const Simulator: React.FC<SimulatorProps> = ({ onSimulate }) => {
                                                     </SelectTrigger>
                                                 </FormControl>
                                                 <SelectContent>
-                                                    <SelectItem value="hyderabad">Hyderabad (IND)</SelectItem>
-                                                    <SelectItem value="delhi">Delhi (IND)</SelectItem>
-                                                    <SelectItem value="chennai">Chennai (IND)</SelectItem>
-                                                    <SelectItem value="tokyo">Tokyo (JP)</SelectItem>
-                                                    <SelectItem value="houston">Houston (US)</SelectItem>
-                                                    <SelectItem value="dusseldorf">Dusseldorf (DE)</SelectItem>
-                                                    <SelectItem value="bahrain">Bahrain (BH)</SelectItem>
-                                                    <SelectItem value="singapore">Singapore (SG)</SelectItem>
-                                                    <SelectItem value="abudhabi">Abu Dhabi (UAE)</SelectItem>
-                                                    <SelectItem value="kaulalumpur">Kuala Lumpur (MY)</SelectItem>
-                                                    <SelectItem value="brisbane">Brisbane (AU)</SelectItem>
-                                                    <SelectItem value="melbourne">Melbourne (AU)</SelectItem>
-                                                    <SelectItem value="sydney">Sydney (AU)</SelectItem>
-                                                    <SelectItem value="london">London (UK)</SelectItem>
-                                                    <SelectItem value="auckland">Auckland (NZ)</SelectItem>
-                                                    <SelectItem value="christchurch">Christchurch (NZ)</SelectItem>
+                                                    {!selectedContinent && (
+                                                        <SelectItem value="placeholder" disabled>
+                                                            Please select a region first
+                                                        </SelectItem>
+                                                    )}
+                                                    {availableCities.map((c) => (
+                                                        <SelectItem key={c.value} value={c.value}>
+                                                            {c.label}
+                                                        </SelectItem>
+                                                    ))}
                                                 </SelectContent>
                                             </Select>
                                             <FormMessage />
@@ -80,7 +138,7 @@ const Simulator: React.FC<SimulatorProps> = ({ onSimulate }) => {
                                 />
                                 <div>
                                 <Label> Select baseline settings</Label>
-                                <p className="text-xs text-muted-foreground">Three well known paramters have been selected for simulation purposes. In real-time, it could be more number of HVAC parameters. </p>
+                                <p className="text-xs text-muted-foreground">Well known paramters have been selected for simulation purposes. In real-time, it could be more number of parameters. </p>
                                 </div>
                                 <FormField
                                     control={form.control}
